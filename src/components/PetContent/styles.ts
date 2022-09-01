@@ -52,22 +52,30 @@ export const Select = styled.select`
 `;
 
 export const PetDetails = styled.div`
+    width: 100%;
+
     display: flex;
     flex-direction: Row;
     align-items: center;
     justify-content: space-around;
     .display-pet{
-        margin: 1rem;
-        max-width: 560px;
-        max-height: 560px;
+        width: 50%;
+        display: flex;
+        justify-content: center;
         .pet-img{
             background-position: center;
             max-width: 560px;
             max-height: 560px;
+
+            border-radius: 10%;
+            box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.6);
         }
     }
     .breed-details{
+        width: 50%;
+
         margin: 1rem;
+        padding: 1rem;
         max-width: 560px;
         display: flex;
         flex-direction: column;
@@ -107,4 +115,16 @@ export const PetDetails = styled.div`
             max-width: 320px;
         }
     }
+`;
+
+export const DetailsFieldset = styled.fieldset`
+    padding: 1rem;
+    border: none;
+    border-radius: 1rem;
+
+    background-color: rgba(255,255,255,0.3);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;

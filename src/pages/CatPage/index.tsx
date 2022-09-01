@@ -30,7 +30,6 @@ export const CatPage: React.VFC = () => {
         catApi.get<IPet[]>('/breeds', config)
         .then(response => {
             setPetResponse(response.data);
-            console.log('response', response.data);
         })
         .catch((err)=>{
             console.log('erro', err);

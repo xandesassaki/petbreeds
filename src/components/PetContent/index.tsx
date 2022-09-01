@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PetDetails, Content, Select } from "./styles";
+import { PetDetails, Content, Select, DetailsFieldset } from "./styles";
 
 interface IProps{
     petResponse: IPet[];
@@ -25,13 +25,18 @@ export const PetContent: React.VFC<IProps> = ({ petResponse }) => {
     const [isSelected, setIsSelected] = useState<boolean>(false);
 
     const handleSelectPet = (e: React.ChangeEvent<HTMLSelectElement>)=>{
-        setSelectedBreed(JSON.parse(e.target.value));
-        setIsSelected(true);
+        if (e.target.value === ''){
+            setIsSelected(false);
+        } else {
+            setSelectedBreed(JSON.parse(e.target.value));
+            setIsSelected(true);
+        };
     };
 
     return (
         <Content>
             <Select onChange={handleSelectPet}>
+                <option value="" />
                 {petResponse?.map((res)=>{
                     return(
                         <option value={JSON.stringify(res)}>{res.name}</option>
@@ -44,13 +49,26 @@ export const PetContent: React.VFC<IProps> = ({ petResponse }) => {
                         <img src={selectedBreed?.image?.url ? selectedBreed?.image?.url : "pet-not-found.png"} alt="Pet" className="pet-img"/>
                     </div>
                     <div className="breed-details">
-                        <div>
+                        <DetailsFieldset>
+                            <legend>Name</legend>
                             <h2 className="breed-name">{selectedBreed?.name}</h2>
-                            <p className="breed-country">Origin country: {selectedBreed?.origin ? selectedBreed?.origin : 'Unknown'}</p>
-                        </div>
-                        <p className="breed-description">{selectedBreed?.description ? selectedBreed?.description : 'There is no description available'}</p>
-                        <p className="breed-temperament">{selectedBreed?.temperament ? selectedBreed?.temperament : 'There is no temperament available'}</p>
-                        <p className="breed-life-span">It's life span is: {selectedBreed?.life_span ? selectedBreed?.life_span : 'Unknown'}</p>
+                        </DetailsFieldset>
+                        <DetailsFieldset>
+                            <legend>Origin Country</legend>
+                            <p className="breed-country">{selectedBreed?.origin ? selectedBreed?.origin : 'Unknown'}</p>
+                        </DetailsFieldset>
+                        <DetailsFieldset>
+                            <legend>Description</legend>
+                            <p className="breed-description">{selectedBreed?.description ? selectedBreed?.description : 'There is no description available'}</p>
+                        </DetailsFieldset>
+                        <DetailsFieldset>
+                            <legend>Temperament</legend>
+                            <p className="breed-temperament">{selectedBreed?.temperament ? selectedBreed?.temperament : 'There is no temperament available'}</p>
+                        </DetailsFieldset>
+                        <DetailsFieldset>
+                            <legend>Life span</legend>
+                            <p className="breed-life-span">{selectedBreed?.life_span ? selectedBreed?.life_span : 'Unknown'}</p>
+                        </DetailsFieldset>
                     </div>
                 </PetDetails>
             )}
