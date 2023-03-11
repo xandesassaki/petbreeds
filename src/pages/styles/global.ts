@@ -5,10 +5,12 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Nunito', sans-serif;
     }
 
     html {
+        background: linear-gradient(180deg, #9BC8DE 0%, #40BCE2 100%) center fixed;
+        height: 100vh;
+
         @media(max-width: 1080px){
             font-size: 93.75%;
         }
@@ -20,10 +22,11 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         -webkit-font-smoothing: antialiased;
+        font-family: 'Amaranth', sans-serif;
     }
 
     h1, h2, h3, h4, h5, h6, strong{
-        font-weight: 600;
+        font-weight: 400;
     }
 
     button {
