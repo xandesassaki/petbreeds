@@ -4,16 +4,20 @@ import DogIcon from "../../../../assets/button-dog-icon.png"
 import CatIcon from "../../../../assets/button-cat-icon.png"
 import { Button } from "../../../../components/Button";
 import { useNavigate } from "react-router-dom";
+import { usePetSelection } from "../../../../context/PetSelectionContext";
 
 export const SelectionButton: React.FC = () => {
     const navigate = useNavigate();
+    const { setSelectedPet } = usePetSelection();
 
-    const navigateDogsList = () => {
-        navigate('/dogs');
+    const handleDogList = () => {
+        setSelectedPet('dog');
+        navigate('/pets');
     };
 
-    const navigateCatsList = () => {
-        navigate('/cats');
+    const handleCatList = () => {
+        setSelectedPet('cat');
+        navigate('/pets');
     };
 
     return (
@@ -21,11 +25,11 @@ export const SelectionButton: React.FC = () => {
             <img src={LogoBanner} alt="Logo" />
             <p className="selection-message">First, choose between :</p>
             <div className="buttons">
-                <Button type="submit" onClick={navigateDogsList}>
+                <Button type="submit" onClick={handleDogList}>
                     <img src={DogIcon} alt="Dog Icon" />
                     <p>Dogs</p>
                 </Button>
-                <Button type="submit" onClick={navigateCatsList}>
+                <Button type="submit" onClick={handleCatList}>
                     <img src={CatIcon} alt="Cat Icon" />
                     <p>Cats</p>
                 </Button>

@@ -1,50 +1,20 @@
-import { useState } from "react";
-import { PetDetails, Content, Select, DetailsFieldset } from "./styles";
+import { useEffect, useState } from "react";
+import { usePetSelection } from "../../../context/PetSelectionContext";
+import { Container } from "./styles";
 
-interface IProps{
-    petResponse: IPet[];
-}
+export const PageContent: React.FC = () => {
+    const { selectedBreed } = usePetSelection();
+    const [petInfo, setPetInfo] = useState();
 
-interface IImage{
-    id: string;
-    url: string;
-};
+    console.log('sel', selectedBreed);
 
-interface IPet {
-    description: string;
-    id: string;
-    life_span: string;
-    name: string;
-    image: IImage;
-    origin: string;
-    temperament: string;
-};
-
-export const PetContent: React.VFC<IProps> = ({ petResponse }) => {
-    const [selectedBreed, setSelectedBreed] = useState<IPet>();
-    const [isSelected, setIsSelected] = useState<boolean>(false);
-
-    const handleSelectPet = (e: React.ChangeEvent<HTMLSelectElement>)=>{
-        if (e.target.value === ''){
-            setIsSelected(false);
-        } else {
-            setSelectedBreed(JSON.parse(e.target.value));
-            setIsSelected(true);
-        };
-    };
+    useEffect(()=>{
+        setPetInfo(selectedBreed);
+    }, [selectedBreed])
 
     return (
-        <Content>
-            <Select onChange={handleSelectPet}>
-                <option value="" />
-                {petResponse?.map((res)=>{
-                    return(
-                        <option value={JSON.stringify(res)}>{res.name}</option>
-                    );
-                })}
-            </Select>
-            {isSelected && (
-                <PetDetails>
+        <Container>
+            {/* <PetDetails>
                     <div className="display-pet">
                         <img src={selectedBreed?.image?.url ? selectedBreed?.image?.url : "pet-not-found.png"} alt="Pet" className="pet-img"/>
                     </div>
@@ -70,8 +40,8 @@ export const PetContent: React.VFC<IProps> = ({ petResponse }) => {
                             <p className="breed-life-span">{selectedBreed?.life_span ? selectedBreed?.life_span : 'Unknown'}</p>
                         </DetailsFieldset>
                     </div>
-                </PetDetails>
-            )}
-        </Content>
+                </PetDetails> */}
+            {petInfo}
+        </Container>
     );
 };
