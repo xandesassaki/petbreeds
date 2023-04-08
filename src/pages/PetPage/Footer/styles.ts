@@ -13,4 +13,8 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    a{
+        text-decoration: none;
+    }
 `;

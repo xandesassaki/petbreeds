@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 interface IContainerProps{
     showGetStarted: boolean;
+    showBreedsTable: boolean;
 }
 
 const fadeIn = keyframes`
@@ -46,6 +47,11 @@ export const Container = styled.div<IContainerProps>`
         p{
             font-size: 1rem;
         }
+    }
+
+    .table-section{
+      opacity: ${({ showBreedsTable }) => showBreedsTable ? '1' : 0};
+      animation: ${({ showBreedsTable }) => showBreedsTable && fadeIn} 1s ease-in-out;
     }
 
     .breeds-table{
