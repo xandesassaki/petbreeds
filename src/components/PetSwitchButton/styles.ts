@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface IProps{
+    isSelected?: boolean;
+}
+
 export const Container = styled.div`
     height: 100%;
     width: 100%;
@@ -10,26 +14,27 @@ export const Container = styled.div`
     align-items: center;
 `;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<IProps>`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 
-    background-color: #F5BE56;
+    background-color: ${({isSelected}) => isSelected ? "#F5BE56" : "#FFDEA8"};
     padding: 0.5rem;
     width: 47.5%;
     height: 100%;
 
-    border: 0 solid;
+    border: ${({isSelected}) => isSelected ? "2px solid black" : "0 solid"};
     border-radius: 4rem;
 
     color: black;
 
-    transition: filter 0.2s;
+    transition: background-color 0.2s;
 
     &:hover{
-        filter: brightness(0.8);
+        background-color: #F5BE56;
+        transition: background-color 0.2s;
     }
 
     .pet-icon{

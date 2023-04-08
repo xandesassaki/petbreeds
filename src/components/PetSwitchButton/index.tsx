@@ -4,7 +4,7 @@ import CatIcon from "../../assets/button-cat-icon.png"
 import { usePetSelection } from "../../context/PetSelectionContext";
 
 export const PetSwitchButton: React.FC = () => {
-    const { setSelectedPet } = usePetSelection();
+    const { setSelectedPet, selectedPet } = usePetSelection();
 
     const handleDogList = () => {
         setSelectedPet('dog');
@@ -16,11 +16,11 @@ export const PetSwitchButton: React.FC = () => {
 
     return (
         <Container>
-            <StyledButton onClick={handleDogList}>
+            <StyledButton onClick={handleDogList} isSelected={selectedPet === 'dog' ? true : false}>
                 <img src={DogIcon} alt="Dog Icon"  className="pet-icon"/>
                 <p>Dog</p>
             </StyledButton>
-            <StyledButton onClick={handleCatList}>
+            <StyledButton onClick={handleCatList} isSelected={selectedPet === 'cat' ? true : false}>
                 <img src={CatIcon} alt="Cat Icon" className="pet-icon"/>
                 <p>Cat</p>
             </StyledButton>
