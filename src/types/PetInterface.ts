@@ -5,7 +5,7 @@ interface IImage{
 
 export interface IPet {
     description: string;
-    id: string;
+    id: number | string;
     life_span: string;
     name: string;
     image: IImage;

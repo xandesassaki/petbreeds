@@ -5,7 +5,7 @@ import { IPet } from '../types/PetInterface';
 interface IPetSelectionContext {
     selectedPet: string,
     setSelectedPet: React.Dispatch<React.SetStateAction<string>>,
-    selectedBreed: any,
+    selectedBreed?: IPet,
     setSelectedBreed: React.Dispatch<React.SetStateAction<any>>,
     petResponse: any,
     setPetResponse: React.Dispatch<React.SetStateAction<any>>
@@ -14,7 +14,7 @@ interface IPetSelectionContext {
 const PetSelectionContext = createContext<IPetSelectionContext>({} as IPetSelectionContext);
 
 export const PetSelection: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
-    const [selectedBreed, setSelectedBreed] = useState<string>();
+    const [selectedBreed, setSelectedBreed] = useState<IPet>({} as IPet);
     const [selectedPet, setSelectedPet] = useState<string>('');
     const [petResponse, setPetResponse] = useState<IPet[]>([{}] as IPet[]);
 

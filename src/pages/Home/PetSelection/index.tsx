@@ -4,16 +4,25 @@ import { PetSwitchButton } from "../../../components/PetSwitchButton";
 import { usePetSelection } from "../../../context/PetSelectionContext";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import { IPet } from "../../../types/PetInterface";
 
 interface IPetSelectionProps{
     showGetStarted: boolean;
 }
 
 export const PetSelection: React.FC<IPetSelectionProps> = ({ showGetStarted }) => {
-    const { petResponse, selectedPet } = usePetSelection();
+    const { petResponse, selectedPet, setSelectedBreed } = usePetSelection();
     const navigate = useNavigate();
 
-    const handlePetSelected = () => {
+    const handlePetSelected = (e: any) => {
+        petResponse.map((breeds: IPet) => {
+            if(selectedPet === 'dog'){
+                const id = parseInt(e.target.value);
+                return breeds.id === id && setSelectedBreed(breeds);
+            } else {
+                return breeds.id === e.target.value && setSelectedBreed(breeds)
+            }
+        });
         navigate("/pets")
     };
 
@@ -28,9 +37,9 @@ export const PetSelection: React.FC<IPetSelectionProps> = ({ showGetStarted }) =
                 <p className="selection-message">Now, choose a breed :</p>
                 <div className="breeds-table">
                 {
-                    petResponse.map((res: any) => {
+                    petResponse.map((res: IPet) => {
                         return (
-                            <option value={JSON.stringify(res)} onClick={handlePetSelected}>
+                            <option value={res.id} onClick={handlePetSelected}>
                                 {res.name}
                             </option>
                         );
