@@ -5,8 +5,6 @@ import PetNotFound from "../../../assets/pet-not-found.png"
 export const PageContent: React.FC = () => {
     const { selectedBreed } = usePetSelection();
 
-    console.log('sel', selectedBreed);
-
     return (
         <Container>
             <div className="display-breed">

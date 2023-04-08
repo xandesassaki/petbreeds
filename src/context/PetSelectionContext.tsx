@@ -33,7 +33,7 @@ export const PetSelection: React.FC<React.PropsWithChildren<{}>> = ({ children }
                     setPetResponse(response.data);
                 })
                 .catch((err)=>{
-                    console.log('erro', err);
+                    console.log('error', err);
                 })
         }
     }, [selectedPet]);
