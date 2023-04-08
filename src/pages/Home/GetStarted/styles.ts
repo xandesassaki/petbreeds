@@ -37,7 +37,6 @@ export const Container = styled.div<IContainerProps>`
     }
 
     span{
-        font-family: 'Amaranth', sans-serif;
         font-size: 2rem;
     }
 

@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         -webkit-font-smoothing: antialiased;
-        font-family: 'Amaranth', sans-serif;
+        font-family: 'Amaranth', sans-serif !important;
     }
 
     h1, h2, h3, h4, h5, h6, strong{

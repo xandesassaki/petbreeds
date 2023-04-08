@@ -6,8 +6,8 @@ import { PetSelection } from './context/PetSelectionContext';
 function App() {
   return (
     <React.Fragment>
+      <GlobalStyle />
       <PetSelection>
-        <GlobalStyle />
         <RoutesRender />
       </PetSelection>
     </React.Fragment>
