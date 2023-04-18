@@ -4,7 +4,7 @@ export const Footer: React.FC = () => {
     return (
         <Container>
             <label>
-                This website was develop by&nbsp;
+                This website was developed by&nbsp;
                 <a href="https://www.linkedin.com/in/alexandre-sassaki/" target="_blank" rel="noreferrer">Alexandre Sassaki</a>
                 &nbsp;and designed by&nbsp;
                 <a href="https://www.linkedin.com/in/luizzague/" target="_blank" rel="noreferrer">Luiz Zague</a>
